@@ -2,19 +2,36 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "./Button";
 
-export default function CourtOccupany({ playerCount }) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.playerContainer}>
-                <Text style={styles.playerCount}>{playerCount}</Text>
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>CURRENTLY</Text>
-                    <Text style={styles.text}>IN COURT</Text>
+export default function CourtOccupany({ playerCount , onCourt }) {
+    if (onCourt) {
+        return (
+            <View style={styles.container}>
+                <View style={styles.playerContainer}>
+                    <Text style={styles.playerCount}>{playerCount}</Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>CURRENTLY</Text>
+                        <Text style={styles.text}>IN COURT</Text>
+                    </View>
                 </View>
+                <Button name="Start Game" color="green"/>
+                <Button name="Exit" color="red"/>
             </View>
-            <Button name="Ball" color="blue"/>
-        </View>
-    );
+        );
+    } else {
+        return (
+            <View style={styles.container}>
+                <View style={styles.playerContainer}>
+                    <Text style={styles.playerCount}>{playerCount}</Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>CURRENTLY</Text>
+                        <Text style={styles.text}>IN COURT</Text>
+                    </View>
+                </View>
+                <Button name="Ball" color="blue"/>
+            </View>
+        );
+    }
+    
 }
 
 const styles = StyleSheet.create({

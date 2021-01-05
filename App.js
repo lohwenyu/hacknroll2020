@@ -1,12 +1,11 @@
 import React from 'react';
-import Button from './src/components/Button';
 import { View, StyleSheet } from "react-native";
-import CourtOccupany from './src/components/CourtOccupancy';
+import PlayersOnCourt from './src/components/PlayersOnCourt';
 
 export default function App() {
     return (
         <View style={styles.container}>
-            <CourtOccupany playerCount={22}/>
+            <PlayersOnCourt players={database["NameOfCourt"]["PlayersOnCourt"]}/>
         </View>
     );
 }
@@ -19,3 +18,26 @@ const styles = StyleSheet.create({
 		backgroundColor: "#000000"
     }
 })
+
+// possible way to store data
+const database = {
+	"NameOfCourt": {
+		"PlayersOnCourt": {
+			"UserID1": {
+				"DisplayPicture": require("./src/images/placeholder.png")
+			},
+			"UserID2": {
+				"DisplayPicture": require("./src/images/placeholder.png")
+			},
+			"UserID3": {
+				"DisplayPicture": require("./src/images/placeholder.png")
+			},
+			"UserID4": {
+				"DisplayPicture": require("./src/images/placeholder.png")
+			},
+			"UserID5": {
+				"DisplayPicture": require("./src/images/placeholder.png")
+			}
+		}
+	}
+}

@@ -1,0 +1,55 @@
+import React from "react";
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+export default function PlayersOnCourt({ players }) {
+
+    let userId = Object.keys(players);
+
+    return(
+        <View style={styles.container}>
+            <Text style={styles.text}>Players on Court</Text>
+            <View style={styles.allPlayersContainer}>
+                {
+                    userId.map((key) => (
+                        // <View key={key} style={styles.imageContainer}>
+                        <TouchableOpacity key={key} style={styles.imageContainer}>
+                            <Image source={players[key]["DisplayPicture"]} style={styles.image}/>
+                        </TouchableOpacity>
+                        // </View>
+                    ))
+                }
+            </View>
+        </View>
+    );
+}
+
+const dimensions = Dimensions.get("window");
+const deviceWidth = dimensions.width;
+
+const styles = StyleSheet.create({
+    container:{
+        justifyContent: "center"
+    },
+    text: {
+        fontSize: 20,
+        color: "#15F4EE",
+        fontWeight: "500",
+        marginStart: deviceWidth * 0.04
+    },
+    allPlayersContainer:{
+        flexDirection: "row",
+        flexWrap: "wrap",
+        marginHorizontal: deviceWidth * 0.02,
+    },
+    imageContainer: {
+        width: deviceWidth * 0.2,
+        height: deviceWidth * 0.2,
+        margin: deviceWidth * 0.02
+    },
+    image: {
+        width: "100%",
+        height: undefined,
+        aspectRatio: 1/1,
+        borderRadius: 100
+    }
+})

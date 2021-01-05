@@ -32,21 +32,24 @@ const styles = StyleSheet.create({
         width: deviceWidth * 0.80,
         height: 35,
         justifyContent: "center",
-        borderRadius: 7
+        borderRadius: 7,
+        marginVertical: 3
     },
     green: {
         backgroundColor: "#15F41E",
         width: deviceWidth * 0.80,
         height: 35,
         justifyContent: "center",
-        borderRadius: 7
+        borderRadius: 7,
+        marginVertical: 3
     },
     red: {
         backgroundColor: "#FF0000",
         width: deviceWidth * 0.80,
         height: 35,
         justifyContent: "center",
-        borderRadius: 7
+        borderRadius: 7,
+        marginVertical: 3
     },
     text: {
         fontSize: 20,
