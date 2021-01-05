@@ -6,9 +6,9 @@ import LocationInformation from "./src/pages/LocationInformation";
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        // <View style={styles.container}>
             <LocationInformation/>
-        </View>
+        // </View>
     );
 }
 

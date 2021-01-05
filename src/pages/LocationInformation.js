@@ -7,7 +7,7 @@ import TeamsOnCourt from '../components/TeamsOnCourt';
 export default function LocationInformation() {
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.innerContainer}>
+            <View>
                 <CourtOccupany playerCount={10} onCourt={true}/>
                 <View style={styles.onCourtContainer}>
                     <PlayersOnCourt players={database["NameOfCourt"]["PlayersOnCourt"]}/>
@@ -23,9 +23,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#000000"
     },
-    innerContainer: {
-		alignItems: "center"
-    },
     onCourtContainer: {
         alignItems: "baseline"
     }
@@ -38,18 +35,18 @@ const database = {
 			"UserID1": {
 				"DisplayPicture": require("../images/placeholder.png")
 			},
-			"UserID2": {
-				"DisplayPicture": require("../images/placeholder.png")
-			},
-			"UserID3": {
-				"DisplayPicture": require("../images/placeholder.png")
-			},
-			"UserID4": {
-				"DisplayPicture": require("../images/placeholder.png")
-			},
-			"UserID5": {
-				"DisplayPicture": require("../images/placeholder.png")
-			}
+			// "UserID2": {
+			// 	"DisplayPicture": require("../images/placeholder.png")
+			// },
+			// "UserID3": {
+			// 	"DisplayPicture": require("../images/placeholder.png")
+			// },
+			// "UserID4": {
+			// 	"DisplayPicture": require("../images/placeholder.png")
+			// },
+			// "UserID5": {
+			// 	"DisplayPicture": require("../images/placeholder.png")
+			// }
 		},
 		"TeamsOnCourt": {
 			"TeamID1": {

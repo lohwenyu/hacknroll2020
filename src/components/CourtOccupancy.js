@@ -37,6 +37,7 @@ export default function CourtOccupany({ playerCount , onCourt }) {
 const styles = StyleSheet.create({
     container: {
         justifyContent: "center",
+        alignItems: "center"
     },
     playerContainer: {
         flexDirection: "row",
