@@ -1,18 +1,18 @@
 import React from "react";
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function PlayersOnCourt({ players }) {
+export default function TeamsOnCourt({ teams }) {
 
-    let userId = Object.keys(players);
+    let teamId = Object.keys(teams);
 
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>Players on Court</Text>
-            <View style={styles.allPlayersContainer}>
+            <Text style={styles.text}>Teams</Text>
+            <View style={styles.allTeamsContainer}>
                 {
-                    userId.map((key) => (
+                    teamId.map((key) => (
                         <TouchableOpacity key={key} style={styles.imageContainer}>
-                            <Image source={players[key]["DisplayPicture"]} style={styles.image}/>
+                            <Image source={teams[key]["DisplayPicture"]} style={styles.image}/>
                         </TouchableOpacity>
                     ))
                 }
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         marginStart: deviceWidth * 0.04
     },
-    allPlayersContainer:{
+    allTeamsContainer:{
         flexDirection: "row",
         flexWrap: "wrap",
         marginHorizontal: deviceWidth * 0.02,
