@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from "react-native";
 import GeneralStatistics from './src/components/GeneralStatistics';
+// import PlayersOnCourt from './src/components/PlayersOnCourt';
+// import TeamsOnCourt from './src/components/TeamsOnCourt';
+// import LocationInformation from "./src/pages/LocationInformation";
+import Login from "./src/pages/LoginPage"
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <GeneralStatistics user={database["Users"]["UserID1"]}/>
-        </View>
+        // <View style={styles.container}>
+        <Login/>
+        // </View>
     );
 }
 
@@ -18,6 +22,7 @@ const styles = StyleSheet.create({
     }
 })
 
+// possible data storage
 const database = {
 	"Users": {
 		"UserID1": {
