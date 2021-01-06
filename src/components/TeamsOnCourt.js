@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: undefined,
         aspectRatio: 1/1,
-        borderRadius: 100
+        borderRadius: 1000
     }
 })
