@@ -14,10 +14,16 @@ export default function Button({ name, onPress, color }) {
                 <Text style={styles.text}>{name}</Text>
             </TouchableOpacity>
         );
-    } else {
+    } else if (color == "red") {
         return (
             <TouchableOpacity onPress={onPress} style={styles.red}>
                 <Text style={styles.text}>{name}</Text>
+            </TouchableOpacity>
+        );
+    } else {
+        return (
+            <TouchableOpacity onPress={onPress} style={styles.empty}>
+                <Text style={styles.emptyText}>{name}</Text>
             </TouchableOpacity>
         );
     }
@@ -55,5 +61,20 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "600",
         textAlign: "center"
+    },
+    empty: {
+        borderColor: "#15F4EE",
+        width: deviceWidth * 0.80,
+        height: 35,
+        justifyContent: "center",
+        borderRadius: 7,
+        marginVertical: 3,
+        borderWidth: 1
+    },
+    emptyText: {
+        fontSize: 20,
+        fontWeight: "600",
+        textAlign: "center",
+        color: "#15F4EE"
     }
 });

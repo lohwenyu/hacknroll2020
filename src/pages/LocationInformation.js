@@ -4,6 +4,7 @@ import CourtOccupany from '../components/CourtOccupancy';
 import PlayersOnCourt from "../components/PlayersOnCourt";
 import TeamsOnCourt from '../components/TeamsOnCourt';
 
+// change data get
 export default function LocationInformation() {
     return (
         <ScrollView style={styles.container}>
@@ -27,52 +28,3 @@ const styles = StyleSheet.create({
         alignItems: "baseline"
     }
 })
-
-// possible way to store data
-const database = {
-	"NameOfCourt": {
-		"PlayersOnCourt": {
-			"UserID1": {
-                "DisplayPicture": require("../images/placeholder.png")
-			},
-			// "UserID2": {
-			// 	"DisplayPicture": require("../images/placeholder.png")
-			// },
-			// "UserID3": {
-			// 	"DisplayPicture": require("../images/placeholder.png")
-			// },
-			// "UserID4": {
-			// 	"DisplayPicture": require("../images/placeholder.png")
-			// },
-			// "UserID5": {
-			// 	"DisplayPicture": require("../images/placeholder.png")
-			// }
-		},
-		"TeamsOnCourt": {
-			"TeamID1": {
-				"DisplayPicture": require("../images/placeholder.png"),
-				"TeamName": "Hello",
-				"Players": {
-					"UserID1": {
-						"DisplayPicture": require("../images/placeholder.png")
-					},
-					"UserID2": {
-						"DisplayPicture": require("../images/placeholder.png")
-					}
-				}
-			},
-			"TeamID2": {
-				"DisplayPicture": require("../images/placeholder.png"),
-				"TeamName": "Hello",
-				"Players": {
-					"UserID1": {
-						"DisplayPicture": require("../images/placeholder.png")
-					},
-					"UserID2": {
-						"DisplayPicture": require("../images/placeholder.png")
-					}
-				}
-			}
-		}
-	}
-}
