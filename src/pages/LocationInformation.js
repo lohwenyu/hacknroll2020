@@ -33,7 +33,7 @@ const database = {
 	"NameOfCourt": {
 		"PlayersOnCourt": {
 			"UserID1": {
-				"DisplayPicture": require("../images/placeholder.png")
+                "DisplayPicture": require("../images/placeholder.png")
 			},
 			// "UserID2": {
 			// 	"DisplayPicture": require("../images/placeholder.png")
