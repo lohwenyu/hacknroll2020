@@ -4,11 +4,13 @@ import LocationInformation from "./src/pages/LocationInformation";
 import Login from "./src/pages/LoginPage"
 import User from './src/pages/User';
 
+import NavBar from "./src/navigations/navBar"
+
 export default function App() {
     return (
         // <View style={styles.container}>
-		<User user={database["Users"]["UserID2"]} known={true} teamedUp={true}/>
-        // </View>
+		<NavBar/>
+		// </View>
     );
 }
 
