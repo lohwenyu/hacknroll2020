@@ -1,15 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from "react-native";
-import GeneralStatistics from './src/components/GeneralStatistics';
-// import PlayersOnCourt from './src/components/PlayersOnCourt';
-// import TeamsOnCourt from './src/components/TeamsOnCourt';
-// import LocationInformation from "./src/pages/LocationInformation";
+import LocationInformation from "./src/pages/LocationInformation";
 import Login from "./src/pages/LoginPage"
+import User from './src/pages/User';
 
 export default function App() {
     return (
         // <View style={styles.container}>
-        <Login/>
+		<User user={database["Users"]["UserID2"]} known={false}/>
         // </View>
     );
 }
