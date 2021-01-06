@@ -7,7 +7,7 @@ import User from './src/pages/User';
 export default function App() {
     return (
         // <View style={styles.container}>
-		<User user={database["Users"]["UserID2"]} known={false}/>
+		<User user={database["Users"]["UserID2"]} known={true} teamedUp={true}/>
         // </View>
     );
 }

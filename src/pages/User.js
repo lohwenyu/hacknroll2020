@@ -3,28 +3,38 @@ import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 import Button from '../components/Button';
 import GeneralStatistics from '../components/GeneralStatistics';
 
-export default function User({ user, known }) {
-    if (known) {
-        return (
-            <View style={styles.container}>
-                <GeneralStatistics user={user}/>
-                <View style={styles.buttonContainer}>
-                    <Button name="Chat" color="blue"/>
-                    <Button name="Form Teams" color="blue"/>
-                </View>
-            </View>
-        );
-    } else {
+export default function User({ user, known, teamedUp }) {
+    if (!known) {
         return (
             <View style={styles.container}>
                 <GeneralStatistics user={user}/>
                 <View style={styles.buttonContainer}>
                     <Button name="Add User" color="blue"/>
-                    <Button name="Chat" color="blue"/>
-                    <Button name="Form Teams" color="blue"/>
                 </View>
             </View>
         );
+    } else {
+        if (!teamedUp) {
+            return (
+                <View style={styles.container}>
+                    <GeneralStatistics user={user}/>
+                    <View style={styles.buttonContainer}>
+                        <Button name="Chat" color="blue"/>
+                        <Button name="Form Teams" color="blue"/>
+                    </View>
+                </View>
+            );
+        } else {
+            return (
+                <View style={styles.container}>
+                    <GeneralStatistics user={user}/>
+                    <View style={styles.buttonContainer}>
+                        <Button name="Chat" color="blue"/>
+                        <Button name="Kick Player" color="red"/>
+                    </View>
+                </View>
+            );
+        }
     }
     
 }
