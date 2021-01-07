@@ -8,7 +8,7 @@ import LocationInformation from "./src/pages/LocationInformation";
 import Login from "./src/pages/LoginPage";
 import Signup from "./src/pages/SignupPage";
 import User from './src/pages/User';
-// <User user={"UserID2"} known={true} teamedUp={true}/>
+// <User userId={"UserID2"}/>
 import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
 import HomePage from './src/pages/HomePage';
@@ -22,8 +22,9 @@ import ProfileStack from './src/navigations/ProfileStack';
 export default function App() {
     return (
         // <View style={styles.container}>
-		    // </View>
-    );
+        <LocationInformation/>
+		// </View>
+    )
 }
 
 const styles = StyleSheet.create({

@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import CourtOccupany from '../components/CourtOccupancy';
 import PlayersOnCourt from "../components/PlayersOnCourt";
 import TeamsOnCourt from '../components/TeamsOnCourt';
+import database from '../databaseExample'
 
 // change data get
 export default function LocationInformation() {

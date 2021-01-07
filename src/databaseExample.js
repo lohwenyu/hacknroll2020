@@ -19,7 +19,7 @@ const database = {
 			"LoseRate": 0.07,
 			"AveragePPG": 11,
 			"DisplayPicture": require("./images/placeholder.png"),
-			"Bookmarks": ["CourtID1", "CourtID2"]
+			"Bookmarks": ["CourtID1"]
 		},
 		"UserID3": {
 			"Name": "Wen Yu",
@@ -28,7 +28,8 @@ const database = {
 			"WinRate": 0.87,
 			"LoseRate": 0.07,
 			"AveragePPG": 11,
-			"DisplayPicture": require("./images/placeholder.png")
+			"DisplayPicture": require("./images/placeholder.png"),
+			"Bookmarks": []			
 		},
 	},
 	"Courts": {
