@@ -11,6 +11,7 @@ import User from './src/pages/User';
 // <User user={"UserID2"} known={true} teamedUp={true}/>
 import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
+import HomePage from './src/pages/HomePage';
 
 import database from "./src/databaseExample";
 
@@ -22,7 +23,7 @@ export default function App() {
     return (
         // <View style={styles.container}>
 		    // </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

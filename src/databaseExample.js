@@ -33,7 +33,11 @@ const database = {
 	},
 	"Courts": {
 		"CourtID1": {
-			"Address": "Block 321 Tampines Avenue 3, S321321",
+            "Address": "6 Potong Pasir Ave 2, Singapore 358361",
+            "Coordinates": {
+                "Latitude": 1.3337286161508455,
+                "Longitude": 103.8670577060402
+            },
 			"Picture": require("./images/placeholder.png"),
 			"PlayersOnCourt": {
 				"UserID1": {
