@@ -9,7 +9,7 @@ export default function LoginForm() {
         <View style={styles.container}>
             <InputBox name="Username"/>
             <InputBox name="Password" password={true}/>
-            <Button name="Submit" color="blue"/>
+            <Button name="Log In" color="blue"/>
         </View>
     )
 };

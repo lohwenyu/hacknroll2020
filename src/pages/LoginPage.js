@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 import LoginForm from "../components/LoginForm";
 
 
-export default function Login() {
+export default function Login({navigation}) {
     return(
         <View style={styles.container}>
             <View style={styles.formContainer}>
@@ -14,7 +14,9 @@ export default function Login() {
             </View>
             <View style={styles.baseTextContainer}>
                 <Text style={styles.baseText}>Don't have an account yet? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("SignupPage")}
+                >
                     <Text style={styles.registerText}>Register</Text>
                 </TouchableOpacity>
             </View>
