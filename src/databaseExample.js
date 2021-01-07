@@ -3,6 +3,7 @@ const database = {
 	"Users": {
 		"UserID1": {
 			"Name": "Kok Wee",
+			"Email": "abc213123@hotmail.com",
 			"GamesPlayed": 37,
 			"WinRate": 0.87,
 			"LoseRate": 0.07,
@@ -12,6 +13,7 @@ const database = {
 		},
 		"UserID2": {
 			"Name": "Kok Wee",
+			"Email": "abc213123@gmail.com",
 			"GamesPlayed": 37,
 			"WinRate": 0.86,
 			"LoseRate": 0.07,
@@ -21,6 +23,7 @@ const database = {
 		},
 		"UserID3": {
 			"Name": "Wen Yu",
+			"Email": "abc213123@icloud.com",
 			"GamesPlayed": 37,
 			"WinRate": 0.87,
 			"LoseRate": 0.07,
