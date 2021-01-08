@@ -9,7 +9,7 @@ import EditProfile from "../pages/EditProfile";
 
 const Stack = createStackNavigator();
 
-export default function ProfileStack({userId}) {
+export default function ProfileStack({navigation}) {
 
     return(
         <NavigationContainer>
@@ -17,7 +17,6 @@ export default function ProfileStack({userId}) {
                 <Stack.Screen
                     name="Profile"
                     component={Profile}
-                    initialParams={{userId:userId}}
                     options={{
                         title:"Profile",
                         headerShown: false
@@ -27,7 +26,6 @@ export default function ProfileStack({userId}) {
                 <Stack.Screen
                     name="EditProfile"
                     component={EditProfile}
-                    initialParams={{userId:"UserID2"}}
                     options={{
                         title:"EditProfile",
                         headerShown: false

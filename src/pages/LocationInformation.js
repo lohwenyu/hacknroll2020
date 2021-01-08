@@ -12,8 +12,8 @@ export default function LocationInformation() {
             <View>
                 <CourtOccupany playerCount={10} onCourt={true}/>
                 <View style={styles.onCourtContainer}>
-                    <PlayersOnCourt players={database["NameOfCourt"]["PlayersOnCourt"]}/>
-                    <TeamsOnCourt teams={database["NameOfCourt"]["TeamsOnCourt"]}/>
+                    <PlayersOnCourt players={database["Courts"]["CourtID1"]["PlayersOnCourt"]}/>
+                    <TeamsOnCourt teams={database["Courts"]["CourtID1"]["TeamsOnCourt"]}/>
                 </View>
             </View>
         </ScrollView>

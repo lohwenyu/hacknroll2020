@@ -33,7 +33,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 export default function App() {
-    return (
+
+  return (
         // <View style={styles.container}>
 		<LandingStack/>
 		// </View>
