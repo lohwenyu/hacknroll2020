@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 import SignupForm from "../components/SignupForm";
 
 
-export default function Signup({navigation}) {
+export default function Signup({ navigation }) {
     return(
         <View style={styles.container}>
             <View style={styles.formContainer}>
