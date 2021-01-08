@@ -22,6 +22,9 @@ export default function HomePage() {
     console.log(latitude);
     console.log(longitude)
 
+    let courts = database["Courts"];
+    let courtKeys = Object.keys(courts);
+
     return (
         <View style={styles.container}>
             <MapView style={styles.map}
@@ -32,18 +35,26 @@ export default function HomePage() {
                     longitudeDelta: LONGITUDE_DELTA,
                 }}
             >
-                <MapView.Marker
-                    coordinate={{latitude: 1.3337286161508455, 
-                    longitude: 103.8670577060402}}
-                    title={"6 Potong Pasir Ave 2, Singapore 358361"}
-                    description={"View More"}
-                    onPress={() => console.log("onpress")}
-                    onCalloutPress={() => {console.log("oncallout")}}
-                >
-                    <MapView.Callout>
-                        <LocationDescription court={database["Courts"]["CourtID1"]}/>
-                    </MapView.Callout>
-                </MapView.Marker>
+                {
+                    courtKeys.map((key) => (
+                        <MapView.Marker
+                            key={key}
+                            coordinate={{
+                                latitude: courts[key]["Coordinates"]["Latitude"],
+                                longitude: courts[key]["Coordinates"]["Longitude"]
+                            }}
+                            title={courts[key]["Address"]}
+                            description={"View More"}
+                            onPress={() => console.log("onpress")}
+                            onCalloutPress={() => {console.log("oncallout")}}
+                        >
+                            <MapView.Callout>
+                                <LocationDescription court={courts[key]}/>
+                            </MapView.Callout>
+                        </MapView.Marker>
+                    ))
+                }
+                
             </MapView>
         </View>
     );

@@ -85,7 +85,11 @@ const database = {
 			}
 		},
 		"CourtID2": {
-			"Address": "Block 321 Tampines Avenue 3, S321321",
+			"Address": "4C St George's Ln, Singapore 322004",
+            "Coordinates": {
+                "Latitude": 1.3242039726320411, 
+                "Longitude": 103.86182203406368,
+            },
 			"Picture": require("./images/placeholder.png"),
 			"PlayersOnCourt": {
 				"UserID1": {
