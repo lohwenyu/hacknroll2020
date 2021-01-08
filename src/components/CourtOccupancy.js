@@ -9,40 +9,62 @@ export default function CourtOccupany({ courtId }) {
     let currUser = firebase.auth().currentUser.uid;
 
     const [onCourt, setOnCourt] = useState(false);
-    
+    const [count, setCount] = useState(0);
+
+
+
     useEffect(()=> {
         firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").once("value", (snapshot) => {
             if (snapshot.child(currUser).exists()) {
-
                 setOnCourt(true);
             }
         })
-    }, [currUser])
+    })
+
+    useEffect(() => {
+        firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").on("value", (snapshot) => {
+            let data = snapshot.val()
+            if (data == null) {
+                setCount(0)
+            } else {
+                let players = {...data}
+                setCount(Object.keys(players).length)
+            }
+        })
+        return () => {
+            firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").off()
+        }
+    })
 
     const onPressBall = () => {
         firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").child(currUser).set(true);
         setOnCourt(true);
     }
 
+    const onPressExit = () => {
+        firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").child(currUser).remove();
+        setOnCourt(false);
+    }
+
     if (onCourt) {
         return (
             <View style={styles.container}>
                 <View style={styles.playerContainer}>
-                    <Text style={styles.playerCount}>{courtId}</Text>
+                    <Text style={styles.playerCount}>{count}</Text>
                     <View style={styles.textContainer}>
                         <Text style={styles.text}>CURRENTLY</Text>
                         <Text style={styles.text}>IN COURT</Text>
                     </View>
                 </View>
                 <Button name="Start Game" color="green"/>
-                <Button name="Exit" color="red"/>
+                <Button name="Exit" color="red" onPress={() => onPressExit()}/>
             </View>
         );
     } else {
         return (
             <View style={styles.container}>
                 <View style={styles.playerContainer}>
-                    <Text style={styles.playerCount}>{courtId}</Text>
+                    <Text style={styles.playerCount}>{count}</Text>
                     <View style={styles.textContainer}>
                         <Text style={styles.text}>CURRENTLY</Text>
                         <Text style={styles.text}>IN COURT</Text>

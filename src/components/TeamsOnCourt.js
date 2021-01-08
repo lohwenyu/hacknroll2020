@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function TeamsOnCourt({ teams }) {
+import firebase from "firebase";
 
-    if (teams != null) {
-        let teamId = Object.keys(teams);
+export default function TeamsOnCourt({ courtId }) {
 
+    const [teams, setTeams] = useState({})
+
+    useEffect(() => {
+        firebase.database().ref("/Courts/" + courtId + "/TeamsOnCourt").on("value", (snapshot) => {
+            let data = snapshot.val()
+            if (data == null) {
+                setTeams({})
+            } else {
+                let teams = {...data}
+                setTeams(teams)
+            }
+        })
+        return () => {
+            firebase.database().ref("/Courts/" + courtId + "/TeamsOnCourt").off()
+        }
+    }, [])
+
+    let teamId = Object.keys(teams);
+    if (teams.length > 0) {
         return(
             <View style={styles.container}>
                 <Text style={styles.text}>Teams</Text>

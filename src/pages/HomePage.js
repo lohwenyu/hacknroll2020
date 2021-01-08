@@ -44,7 +44,6 @@ export default function HomePage({ navigation }) {
     useEffect(() => {
         firebase.database().ref("/Courts").once("value", snapshot => {
             let data = snapshot.val()
-            console.log(snapshot)
             let courtItems = {...data}
             setCourts(courtItems)
         })

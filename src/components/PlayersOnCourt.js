@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function PlayersOnCourt({ players }) {
+import firebase from "firebase";
 
-    if (players != null) {
-        let userId = Object.keys(players);
+export default function PlayersOnCourt({ courtId }) {
 
+    const [players, setPlayers] = useState({})
+
+    useEffect(() => {
+        firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").on("value", (snapshot) => {
+            let data = snapshot.val()
+            if (data == null) {
+                setPlayers({})
+            } else {
+                let players = {...data}
+                setPlayers(players)
+            }
+        })
+        return () => {
+            firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").off()
+        }
+    })
+
+    let userId = Object.keys(players);
+
+    if (userId.length > 0) {
         return(
             <View style={styles.container}>
                 <Text style={styles.text}>Players on Court</Text>
