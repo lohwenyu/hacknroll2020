@@ -9,26 +9,24 @@ const Stack = createStackNavigator();
 
 export default function LoginStack() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="LoginPage"
-                    component={Login}
-                    options={{
-                        title:"LoginPage",
-                        headerShown: false
-                    }}
-                />
+        <Stack.Navigator>
+            <Stack.Screen
+                name="LoginPage"
+                component={Login}
+                options={{
+                    title:"LoginPage",
+                    headerShown: false
+                }}
+            />
 
-                <Stack.Screen
-                    name="SignupPage"
-                    component={Signup}
-                    options={{
-                        title:"SignupPage",
-                        headerShown: false
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+            <Stack.Screen
+                name="SignupPage"
+                component={Signup}
+                options={{
+                    title:"SignupPage",
+                    headerShown: false
+                }}
+            />
+        </Stack.Navigator>
     )
 }

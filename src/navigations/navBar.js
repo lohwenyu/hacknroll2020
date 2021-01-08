@@ -8,62 +8,60 @@ const Tab = createBottomTabNavigator();
 
 export default function NavBar() {
     return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({route}) => ({
-                tabBarIcon: ({focused, color, size}) => {
-                    let iconName;
+        <Tab.Navigator
+            screenOptions={({route}) => ({
+            tabBarIcon: ({focused, color, size}) => {
+                let iconName;
 
-                    if (route.name === 'Courts') {
-                        iconName = focused
-                        ? 'basketball'
-                        : 'basketball-outline';
+                if (route.name === 'Courts') {
+                    iconName = focused
+                    ? 'basketball'
+                    : 'basketball-outline';
 
-                    } else if (route.name === 'Chats') {
-                        iconName = focused 
-                        ? 'chatbubble-ellipses' 
-                        : 'chatbubble-ellipses-outline';
+                } else if (route.name === 'Chats') {
+                    iconName = focused 
+                    ? 'chatbubble-ellipses' 
+                    : 'chatbubble-ellipses-outline';
 
-                    } else if (route.name === 'Bookmarks') {
-                        iconName = focused 
-                        ? 'bookmarks' 
-                        : 'bookmarks-outline';
+                } else if (route.name === 'Bookmarks') {
+                    iconName = focused 
+                    ? 'bookmarks' 
+                    : 'bookmarks-outline';
 
-                    } else if (route.name === 'Leaderboard') {
-                        iconName = focused 
-                        ? 'trophy' 
-                        : 'trophy-outline';
+                } else if (route.name === 'Leaderboard') {
+                    iconName = focused 
+                    ? 'trophy' 
+                    : 'trophy-outline';
 
-                    } else if (route.name === 'Profile') {
-                        iconName = focused 
-                        ? 'person-circle'
-                        : 'person-circle-outline';
-                    }       
+                } else if (route.name === 'Profile') {
+                    iconName = focused 
+                    ? 'person-circle'
+                    : 'person-circle-outline';
+                }       
 
-                    return <Ionicons name={iconName} size={size} color={"#15F4EE"} />;
+                return <Ionicons name={iconName} size={size} color={"#15F4EE"} />;
+            },
+            })}
+
+            tabBarOptions={{
+                style:{
+                    backgroundColor:"#000000",
+                    // height
                 },
-                })}
+                activeTintColor: "#15F4EE",
+                inactiveTintColor: "#15F4EE"
+            }}
 
-                tabBarOptions={{
-                    style:{
-                        backgroundColor:"#000000",
-                        // height
-                    },
-                    activeTintColor: "#15F4EE",
-                    inactiveTintColor: "#15F4EE"
-                }}
+            
+        >
 
-                
-            >
+            <Tab.Screen name="Courts" component={Courts} />
+            <Tab.Screen name="Chats" component={Chats} />
+            <Tab.Screen name="Bookmarks" component={Bookmarks} />
+            <Tab.Screen name="Leaderboard" component={Leaderboard} />
+            <Tab.Screen name="Profile" component={Profile} />
 
-                <Tab.Screen name="Courts" component={Courts} />
-                <Tab.Screen name="Chats" component={Chats} />
-                <Tab.Screen name="Bookmarks" component={Bookmarks} />
-                <Tab.Screen name="Leaderboard" component={Leaderboard} />
-                <Tab.Screen name="Profile" component={Profile} />
-
-            </Tab.Navigator>
-        </NavigationContainer>
+        </Tab.Navigator>
     )
 }
 

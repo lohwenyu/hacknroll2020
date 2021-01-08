@@ -20,6 +20,7 @@ import LandingStack from "./src/navigations/landingStack";
 import ProfileStack from './src/navigations/ProfileStack';
 
 import * as firebase from "firebase";
+import OverallNav from './src/navigations/OverallNav';
 const firebaseConfig = {
 	apiKey: "AIzaSyCFfoDlIbZv-QtoEEe24vZcbB_MWl8xzYY",
 	authDomain: "hacknroll2021-balling.firebaseapp.com",
@@ -36,7 +37,7 @@ export default function App() {
 
   return (
         // <View style={styles.container}>
-		<LandingStack/>
+		<OverallNav/>
 		// </View>
     )
 }
