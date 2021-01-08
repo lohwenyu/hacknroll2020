@@ -4,9 +4,10 @@ import BookmarkedCourt from "../components/BookmarkedCourt";
 
 import database from "../databaseExample";
 
-export default function Bookmarks({ userId }) {
-
-    let bookmarkKeys = database["Users"][userId]["Bookmarks"];
+export default function Bookmarks({navigation}) {
+    
+    // userId hardcoded 
+    let bookmarkKeys = database["Users"]["UserID2"]["Bookmarks"];
 
     return (
         <ScrollView style={styles.container}>
@@ -15,7 +16,14 @@ export default function Bookmarks({ userId }) {
                         bookmarkKeys.map((key) => (
                             <View style={styles.innerContainer}>
                                 <View key={key} style={styles.individualBookmark}>
-                                    <BookmarkedCourt court={database["Courts"][key]}/>
+                                    <BookmarkedCourt 
+                                        court={database["Courts"][key]}
+                                        onPress={() => navigation.navigate(
+                                            "LocationInformation", {
+                                                courtId: key
+                                            }
+                                        )}
+                                    />
                                 </View>
                             </View>
                         ))

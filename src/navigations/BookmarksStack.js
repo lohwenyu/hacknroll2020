@@ -2,28 +2,29 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from "../pages/LoginPage";
-import Signup from "../pages/SignupPage";
+import Bookmarks from "../pages/Bookmarks"
+import LocationInformation from "../pages/LocationInformation"
 
 const Stack = createStackNavigator();
 
-export default function LoginStack() {
+export default function BookmarksStack() {
     return (
+        // If no navigation container will throw error
         <Stack.Navigator>
             <Stack.Screen
-                name="LoginPage"
-                component={Login}
+                name="Bookmarks"
+                component={Bookmarks}
                 options={{
-                    title:"LoginPage",
+                    title:"Bookmarks",
                     headerShown: false
                 }}
             />
 
             <Stack.Screen
-                name="SignupPage"
-                component={Signup}
+                name="LocationInformation"
+                component={LocationInformation}
                 options={{
-                    title:"SignupPage",
+                    title:"LocationInformation",
                     headerShown: false
                 }}
             />

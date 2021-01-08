@@ -2,12 +2,16 @@ import React from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import Button from "./Button";
 
-export default function BookmarkedCourt({ court }) {
+export default function BookmarkedCourt({ court, onPress }) {
     return (
         <View style={styles.container}>
             <Text style={styles.addressText}>{court["Address"]}</Text>
             <Image source={court["Picture"]} style={styles.image}/>
-            <Button name="Balling" color="empty"/>
+            <Button 
+                name="View court details" 
+                color="empty"
+                onPress={onPress}
+            />
         </View>
     );
 }

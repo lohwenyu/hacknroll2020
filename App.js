@@ -20,9 +20,11 @@ import NavBar from "./src/navigations/navBar";
 import LandingStack from "./src/navigations/landingStack";
 import ProfileStack from './src/navigations/ProfileStack';
 import HomeStack from './src/navigations/HomeStack';
+import BookmarksStack from "./src/navigations/BookmarksStack";
 
 import * as firebase from "firebase";
 import OverallNav from './src/navigations/OverallNav';
+
 const firebaseConfig = {
 	apiKey: "AIzaSyCFfoDlIbZv-QtoEEe24vZcbB_MWl8xzYY",
 	authDomain: "hacknroll2021-balling.firebaseapp.com",
@@ -38,17 +40,8 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
 
 return (
-        // <View style={styles.container}>
-        // <LocationDescription 
-        //   court={database["Courts"]["CourtID1"]} 
-        //   onPress={() => {console.log("hello")}}
-        // />
-        // <HomePage/>
-        // <HomeStack/>
-        // <EditProfile/>
-			// </View>
-		<OverallNav/>
-    )
+	<OverallNav/>
+	)
 }
 
 const styles = StyleSheet.create({
