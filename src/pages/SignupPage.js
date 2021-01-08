@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -5,7 +6,7 @@ import Logo from "../components/Logo";
 import SignupForm from "../components/SignupForm";
 
 
-export default function Signup({navigation}) {
+export default function Signup({ navigation }) {
     return(
         <View style={styles.container}>
             <View style={styles.formContainer}>

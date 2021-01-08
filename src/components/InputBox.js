@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet, TextInput } from 'react-native';
 
-export default function InputBox({ name, password }) {
+export default function InputBox({ name, password, onChangeText }) {
     return (
         <TextInput
             placeholder={name}
@@ -9,6 +9,7 @@ export default function InputBox({ name, password }) {
             color="#15F4EE"
             placeholderTextColor="#15F4EE"
             secureTextEntry={password}
+            onChangeText={onChangeText}
         />
     )
 };
