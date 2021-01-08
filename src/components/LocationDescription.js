@@ -2,12 +2,16 @@ import React from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import Button from "./Button";
 
-export default function LocationDescription({ court }) {
+export default function LocationDescription({ court, navigation, onPress}) {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{court["Address"]}</Text>
             <Image source={court["Picture"]} style={styles.picture}/>
-            <Button name="View Court Details" color="checkCourtOut"/> 
+            <Button 
+                name="View Court Details" 
+                color="checkCourtOut"
+                onPress={onPress}
+            /> 
         </View>
     );
 }

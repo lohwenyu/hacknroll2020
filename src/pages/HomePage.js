@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import LocationDescription from "../components/LocationDescription";
 import database from "../databaseExample";
 
-export default function HomePage() {
+export default function HomePage({navigation}) {
 
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
@@ -41,7 +41,10 @@ export default function HomePage() {
                     onCalloutPress={() => {console.log("oncallout")}}
                 >
                     <MapView.Callout>
-                        <LocationDescription court={database["Courts"]["CourtID1"]}/>
+                        <LocationDescription 
+                            court={database["Courts"]["CourtID1"]}
+                            onPress={() => console.log("hello")}
+                        />
                     </MapView.Callout>
                 </MapView.Marker>
             </MapView>
