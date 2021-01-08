@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import NavBar from "./navBar";
-import LandingStack from "./landingStack";
+import LandingStack from "./LandingStack";
 
 const Stack = createStackNavigator();
 export default function OverallNav() {
