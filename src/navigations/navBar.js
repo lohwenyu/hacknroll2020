@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import ProfileStack from "./ProfileStack";
+import HomeStack from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -56,7 +57,7 @@ export default function NavBar() {
             
         >
 
-            <Tab.Screen name="Courts" component={Courts} />
+            <Tab.Screen name="Courts" component={HomeStack} />
             <Tab.Screen name="Chats" component={Chats} />
             <Tab.Screen name="Bookmarks" component={Bookmarks} />
             <Tab.Screen name="Leaderboard" component={Leaderboard} />

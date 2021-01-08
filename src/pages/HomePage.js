@@ -4,9 +4,7 @@ import MapView from 'react-native-maps';
 import LocationDescription from "../components/LocationDescription";
 import database from "../databaseExample";
 
-import firebase from "firebase";
-
-export default function HomePage() {
+export default function HomePage({ navigation }) {
 
     // const [latitude, setLatitude] = useState(0);
     // const [longitude, setLongitude] = useState(0);
@@ -24,15 +22,15 @@ export default function HomePage() {
     // console.log(latitude);
     // console.log(longitude)
 
-    var ref = firebase.database().ref('/Courts')
-    var newMarker = ref.push();
-    newMarker.set({
-        "Address": "4C St George's Ln, Singapore 322004",
-        "Coordinates": {
-            "Latitude": 1.3242039726320411, 
-            "Longitude": 103.86182203406368,
-        },
-    })
+    // var ref = firebase.database().ref('/Courts')
+    // var newMarker = ref.push();
+    // newMarker.set({
+    //     "Address": "4C St George's Ln, Singapore 322004",
+    //     "Coordinates": {
+    //         "Latitude": 1.3242039726320411, 
+    //         "Longitude": 103.86182203406368,
+    //     },
+    // })
 
     // const [courts, setCourts] = useState({});
 
@@ -43,8 +41,9 @@ export default function HomePage() {
     //         setCourts(courtItems)
     //     })
 
+    let courts = database["Courts"]
     let courtKeys = Object.keys(courts);
-    console.log(courtKeys)
+    // console.log(courtKeys)
 
     return (
         <View style={styles.container}>
@@ -61,9 +60,10 @@ export default function HomePage() {
                         <MapView.Marker
                             key={key}
                             coordinate={{
-                                latitude: courts[key].Latitude,
-                                longitude: courts[key].Longitude
+                                latitude: courts[key]["Coordinates"]["Latitude"],
+                                longitude: courts[key]["Coordinates"]["Longitude"]
                             }}
+                            onCalloutPress={() => console.log("HELLO")} // do the navigation here
                         >
                             <MapView.Callout>
                                 <LocationDescription court={courts[key]}/>
@@ -71,7 +71,6 @@ export default function HomePage() {
                         </MapView.Marker>
                     ))
                 }
-                
             </MapView>
         </View>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 
+
 export default function Button({ name, onPress, color }) {
     if (color == "blue") {
         return (
@@ -20,18 +21,12 @@ export default function Button({ name, onPress, color }) {
                 <Text style={styles.text}>{name}</Text>
             </TouchableOpacity>
         );
-    } else if (color == "empty") {
+    } else {
         return (
             <TouchableOpacity onPress={onPress} style={styles.empty}>
                 <Text style={styles.emptyText}>{name}</Text>
             </TouchableOpacity>
         );
-    } else {
-        return (
-            <TouchableOpacity onPress={onPress} style={styles.checkCourtOut}>
-                <Text style={styles.checkCourtOutText}>{name}</Text>
-            </TouchableOpacity>
-        )
     }
 }
 
@@ -79,21 +74,6 @@ const styles = StyleSheet.create({
     },
     emptyText: {
         fontSize: 20,
-        fontWeight: "600",
-        textAlign: "center",
-        color: "#15F4EE"
-    },
-    checkCourtOut: {
-        borderColor: "#15F4EE",
-        width: deviceWidth * 0.60,
-        height: 35,
-        justifyContent: "center",
-        borderRadius: 10,
-        marginVertical: 3,
-        borderWidth: 1
-    },
-    checkCourtOutText: {
-        fontSize: 16,
         fontWeight: "600",
         textAlign: "center",
         color: "#15F4EE"

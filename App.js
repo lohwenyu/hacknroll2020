@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from "react-native";
 
 import BookmarkedCourt from './src/components/BookmarkedCourt';
+import LocationDescription from "./src/components/LocationDescription"
 
 import Bookmarks from './src/pages/Bookmarks';
 import LocationInformation from "./src/pages/LocationInformation";
@@ -18,6 +19,7 @@ import database from "./src/databaseExample";
 import NavBar from "./src/navigations/navBar";
 import LandingStack from "./src/navigations/landingStack";
 import ProfileStack from './src/navigations/ProfileStack';
+import HomeStack from './src/navigations/HomeStack';
 
 import * as firebase from "firebase";
 import OverallNav from './src/navigations/OverallNav';
@@ -35,10 +37,17 @@ firebase.initializeApp(firebaseConfig);
 
 export default function App() {
 
-  return (
+return (
         // <View style={styles.container}>
-		<HomePage/>
-		// </View>
+        // <LocationDescription 
+        //   court={database["Courts"]["CourtID1"]} 
+        //   onPress={() => {console.log("hello")}}
+        // />
+        // <HomePage/>
+        // <HomeStack/>
+        // <EditProfile/>
+			// </View>
+		<OverallNav/>
     )
 }
 
