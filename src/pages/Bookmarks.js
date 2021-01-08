@@ -4,25 +4,27 @@ import BookmarkedCourt from "../components/BookmarkedCourt";
 
 import database from "../databaseExample";
 
-export default function Bookmarks({ user }) {
+export default function Bookmarks({ userId }) {
 
-    let bookmarkKeys = user["Bookmarks"];
+    let bookmarkKeys = database["Users"][userId]["Bookmarks"];
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.innerContainer}>
                 {
                     bookmarkKeys.length > 0 ? (
                         bookmarkKeys.map((key) => (
-                            <View key={key} style={styles.individualBookmark}>
-                                <BookmarkedCourt court={database["Courts"][key]}/>
+                            <View style={styles.innerContainer}>
+                                <View key={key} style={styles.individualBookmark}>
+                                    <BookmarkedCourt court={database["Courts"][key]}/>
+                                </View>
                             </View>
                         ))
                     ) : (
-                        <Text style={styles.emptyText}>No bookmarks found.</Text>
+                        <View style={styles.emptyContainer}>
+                            <Text style={styles.emptyText}>No bookmarks found.</Text>
+                        </View>
                     )
                 }
-            </View>
         </ScrollView>
     );
 }
@@ -39,7 +41,16 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     emptyText: {
+        flex: 1,
+        color: "#15F4EE",
         fontSize: 20,
-        fontWeight: "600"
+        fontWeight: "600",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    emptyContainer: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     }
 });

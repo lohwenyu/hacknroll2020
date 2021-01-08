@@ -3,11 +3,11 @@ import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
 import Button from '../components/Button';
 import GeneralStatistics from '../components/GeneralStatistics';
 
-export default function User({ user, known, teamedUp }) {
+export default function User({ userId, known, teamedUp }) {
     if (!known) {
         return (
             <View style={styles.container}>
-                <GeneralStatistics user={user}/>
+                <GeneralStatistics userId={userId}/>
                 <View style={styles.buttonContainer}>
                     <Button name="Add User" color="blue"/>
                 </View>
@@ -17,7 +17,7 @@ export default function User({ user, known, teamedUp }) {
         if (!teamedUp) {
             return (
                 <View style={styles.container}>
-                    <GeneralStatistics user={user}/>
+                    <GeneralStatistics userId={userId}/>
                     <View style={styles.buttonContainer}>
                         <Button name="Chat" color="blue"/>
                         <Button name="Form Teams" color="blue"/>
@@ -27,7 +27,7 @@ export default function User({ user, known, teamedUp }) {
         } else {
             return (
                 <View style={styles.container}>
-                    <GeneralStatistics user={user}/>
+                    <GeneralStatistics userId={userId}/>
                     <View style={styles.buttonContainer}>
                         <Button name="Chat" color="blue"/>
                         <Button name="Kick Player" color="red"/>

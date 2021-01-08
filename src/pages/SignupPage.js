@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -13,7 +14,7 @@ export default function Signup({ navigation }) {
                 <SignupForm/>
             </View>
             <View style={styles.baseTextContainer}>
-                <Text style={styles.baseText}>Have an account yet? </Text>
+                <Text style={styles.baseText}>Don't have an account? </Text>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("LoginPage")}
                 >

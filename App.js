@@ -1,15 +1,23 @@
 import React from 'react';
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import BookmarkedCourt from './src/components/BookmarkedCourt';
+
 import Bookmarks from './src/pages/Bookmarks';
 import LocationInformation from "./src/pages/LocationInformation";
-import Login from "./src/pages/LoginPage"
-import Signup from "./src/pages/SignupPage"
+import Login from "./src/pages/LoginPage";
+import Signup from "./src/pages/SignupPage";
 import User from './src/pages/User';
+// <User userId={"UserID2"}/>
+import Profile from './src/pages/Profile';
+import EditProfile from './src/pages/EditProfile';
 import HomePage from './src/pages/HomePage';
 
-// Nav Imports
-import NavBar from "./src/navigations/navBar"
-import LoginStack from "./src/navigations/landingStack"
+import database from "./src/databaseExample";
+
+import NavBar from "./src/navigations/navBar";
+import LandingStack from "./src/navigations/landingStack";
+import ProfileStack from './src/navigations/ProfileStack';
 
 import * as firebase from "firebase";
 const firebaseConfig = {
@@ -27,9 +35,9 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
     return (
         // <View style={styles.container}>
-		<Signup/>
+		<LandingStack/>
 		// </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -39,4 +47,3 @@ const styles = StyleSheet.create({
 		alignItems: "center"
     }
 })
-

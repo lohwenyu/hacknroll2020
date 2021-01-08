@@ -30,8 +30,7 @@ function signupUser(email, password) {
             return;
         }
         firebase.auth().createUserWithEmailAndPassword(email, password);
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error.toString())
     }
 }

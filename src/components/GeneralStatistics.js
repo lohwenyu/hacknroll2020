@@ -1,18 +1,23 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Dimensions } from "react-native";
+import database from '../databaseExample';
 
-export default function GeneralStatistics({ user }) {
+export default function GeneralStatistics({ userId }) {
+
+    const userInfo = database["Users"][userId]
+    
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image source={user["DisplayPicture"]} style={styles.image}/>
+                <Image source={userInfo["DisplayPicture"]} style={styles.image}/>
             </View>
-            <Text style={styles.usernameText}>{user["Name"]}</Text>
+            <Text style={styles.usernameText}>{userInfo["Name"]}</Text>
+            <Text style={styles.userIdText}>#{userId}</Text>
             <Text style={styles.header}>General Statistics</Text>
-            <Text style={styles.statistics}>Games Played: {user["GamesPlayed"]}</Text>
-            <Text style={styles.statistics}>Win Rate: {user["WinRate"]}</Text>
-            <Text style={styles.statistics}>Lose Rate: {user["LoseRate"]}</Text>
-            <Text style={styles.statistics}>Average Point/Game: {user["AveragePPG"]}</Text>
+            <Text style={styles.statistics}>Games Played: {userInfo["GamesPlayed"]}</Text>
+            <Text style={styles.statistics}>Win Rate: {userInfo["WinRate"]}</Text>
+            <Text style={styles.statistics}>Lose Rate: {userInfo["LoseRate"]}</Text>
+            <Text style={styles.statistics}>Average Point/Game: {userInfo["AveragePPG"]}</Text>
         </View>
     );
 }
@@ -39,8 +44,13 @@ const styles = StyleSheet.create({
     },
     usernameText: {
         fontSize: 20,
-        marginBottom: deviceHeight * 0.05,
         color: "#ffffff"
+    },
+    userIdText: {
+        fontSize: 14,
+        marginBottom: deviceHeight * 0.05,
+        color: "#ffffff",
+        fontWeight: '400'        
     },
     header: {
         fontSize: 22,
