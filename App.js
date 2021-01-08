@@ -20,10 +20,12 @@ import LoginStack from "./src/navigations/LandingStack";
 import ProfileStack from './src/navigations/ProfileStack';
 
 export default function App() {
-    return (
+
+  return (
         // <View style={styles.container}>
-        <LocationInformation/>
-		// </View>
+        <ProfileStack/>
+        // <EditProfile/>
+		    // </View>
     )
 }
 

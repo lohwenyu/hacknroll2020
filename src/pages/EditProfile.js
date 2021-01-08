@@ -6,14 +6,13 @@ import { color } from "react-native-reanimated";
 
 import Button from "../components/Button"
 
-// editing username changes userId?
-export default function EditProfile({ userId }) {
+export default function EditProfile({navigation}) {
 
-    const userInfo = database["Users"][userId]
+    // change userId placeholder
+    const userInfo = database["Users"]["UserID2"]
 
     return (
         <View style={styles.pageContainer}>
-            {/* edit image */}
             <TouchableOpacity
                 onPress={() => {}}
             >
@@ -26,17 +25,25 @@ export default function EditProfile({ userId }) {
                 </View>
             </TouchableOpacity>
             
-            <Text style={styles.updatePrompt}>Update Your Profile</Text>
+            <Text style={styles.updatePrompt}>Press field to update</Text>
+
             <TextInput 
                 placeholder={userInfo["Name"]}
                 placeholderTextColor="#ffffff"
                 style={styles.usernameText}/>
-            <Text style={styles.userIdText}>#{userId}</Text>
+
+            <Text style={styles.userIdText}>#placeholderId</Text>
+
             <TextInput 
                 placeholder={userInfo["Email"]}
                 placeholderTextColor="#ffffff"
-                style={[styles.usernameText, {marginBottom: 10}]}/>
-            <Button name="Submit" color="green"/>
+                style={[styles.usernameText, {marginBottom: deviceHeight * 0.05}]}/>
+
+            <Button name="Update"/>
+            <Button 
+                name="Cancel Changes" 
+                onPress={() => navigation.navigate("Profile")}
+            />
 
         </View>
     );
