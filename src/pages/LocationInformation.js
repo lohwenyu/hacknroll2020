@@ -5,15 +5,21 @@ import PlayersOnCourt from "../components/PlayersOnCourt";
 import TeamsOnCourt from '../components/TeamsOnCourt';
 import database from '../databaseExample'
 
+import firebase from "firebase";
+
 // change data get
-export default function LocationInformation() {
+export default function LocationInformation({ route }) {
+
+    let currCourt = firebase.database().ref("/Courts").child(route.params.courtId);
+    console.log(currCourt);
+
     return (
         <ScrollView style={styles.container}>
             <View>
                 <CourtOccupany playerCount={10} onCourt={true}/>
                 <View style={styles.onCourtContainer}>
-                    <PlayersOnCourt players={database["Courts"]["CourtID1"]["PlayersOnCourt"]}/>
-                    <TeamsOnCourt teams={database["Courts"]["CourtID1"]["TeamsOnCourt"]}/>
+                    <PlayersOnCourt players={currCourt["PlayersOnCourt"]}/>
+                    <TeamsOnCourt teams={currCourt["TeamsOnCourt"]}/>
                 </View>
             </View>
         </ScrollView>

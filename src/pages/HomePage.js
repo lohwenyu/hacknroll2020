@@ -4,6 +4,8 @@ import MapView from 'react-native-maps';
 import LocationDescription from "../components/LocationDescription";
 import database from "../databaseExample";
 
+import firebase from "firebase";
+
 export default function HomePage({ navigation }) {
 
     // const [latitude, setLatitude] = useState(0);
@@ -22,7 +24,12 @@ export default function HomePage({ navigation }) {
     // console.log(latitude);
     // console.log(longitude)
 
-    // var ref = firebase.database().ref('/Courts')
+    const onNavigate = (courtId) => {
+        navigation.navigate("LocationInformation", {courtId: courtId})
+    }
+
+    var currUser = firebase.auth().currentUser;
+    var ref = firebase.database().ref('/Courts');
     // var newMarker = ref.push();
     // newMarker.set({
     //     "Address": "4C St George's Ln, Singapore 322004",
@@ -32,18 +39,20 @@ export default function HomePage({ navigation }) {
     //     },
     // })
 
-    // const [courts, setCourts] = useState({});
+    const [courts, setCourts] = useState({});
 
-    //     firebase.database().ref("/Courts").once("value", snapShot => {
-    //         let data = snapShot.val()
-    //         console.log(data)
-    //         let courtItems = {...data}
-    //         setCourts(courtItems)
-    //     })
+    useEffect(() => {
+        firebase.database().ref("/Courts").once("value", snapshot => {
+            let data = snapshot.val()
+            console.log(snapshot)
+            let courtItems = {...data}
+            setCourts(courtItems)
+        })
+    }, [currUser])
 
-    let courts = database["Courts"]
+    // let courts = database["Courts"]
     let courtKeys = Object.keys(courts);
-    // console.log(courtKeys)
+    console.log(courtKeys)
 
     return (
         <View style={styles.container}>
@@ -63,7 +72,7 @@ export default function HomePage({ navigation }) {
                                 latitude: courts[key]["Coordinates"]["Latitude"],
                                 longitude: courts[key]["Coordinates"]["Longitude"]
                             }}
-                            onCalloutPress={() => console.log("HELLO")} // do the navigation here
+                            onCalloutPress={() => onNavigate(key)} // do the navigation here
                         >
                             <MapView.Callout>
                                 <LocationDescription court={courts[key]}/>

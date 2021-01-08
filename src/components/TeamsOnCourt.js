@@ -3,22 +3,31 @@ import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "rea
 
 export default function TeamsOnCourt({ teams }) {
 
-    let teamId = Object.keys(teams);
+    if (teams != null) {
+        let teamId = Object.keys(teams);
 
-    return(
-        <View style={styles.container}>
-            <Text style={styles.text}>Teams</Text>
-            <View style={styles.allTeamsContainer}>
-                {
-                    teamId.map((key) => (
-                        <TouchableOpacity key={key} style={styles.imageContainer}>
-                            <Image source={teams[key]["DisplayPicture"]} style={styles.image}/>
-                        </TouchableOpacity>
-                    ))
-                }
+        return(
+            <View style={styles.container}>
+                <Text style={styles.text}>Teams</Text>
+                <View style={styles.allTeamsContainer}>
+                    {
+                        teamId.map((key) => (
+                            <TouchableOpacity key={key} style={styles.imageContainer}>
+                                <Image source={teams[key]["DisplayPicture"]} style={styles.image}/>
+                            </TouchableOpacity>
+                        ))
+                    }
+                </View>
             </View>
-        </View>
-    );
+        );
+    } else {
+        return(
+            <View style={styles.container}>
+                <Text style={styles.text}>Teams</Text>
+                <Text>There are currently no teams on court.</Text>
+            </View>
+        );
+    }
 }
 
 const dimensions = Dimensions.get("window");
