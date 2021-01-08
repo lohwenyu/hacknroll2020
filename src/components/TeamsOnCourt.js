@@ -24,7 +24,7 @@ export default function TeamsOnCourt({ teams }) {
         return(
             <View style={styles.container}>
                 <Text style={styles.text}>Teams</Text>
-                <Text>There are currently no teams on court.</Text>
+                <Text style={styles.noTeamText}>There are currently no teams on court.</Text>
             </View>
         );
     }
@@ -59,5 +59,11 @@ const styles = StyleSheet.create({
         height: undefined,
         aspectRatio: 1/1,
         borderRadius: 1000
+    },
+    noTeamText: {
+        fontSize: 18,
+        color: "#ffffff",
+        marginStart: deviceWidth * 0.04,
+        marginTop: 5
     }
 })

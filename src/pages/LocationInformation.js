@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView } from "react-native";
 import CourtOccupany from '../components/CourtOccupancy';
 import PlayersOnCourt from "../components/PlayersOnCourt";
@@ -10,13 +10,22 @@ import firebase from "firebase";
 // change data get
 export default function LocationInformation({ route }) {
 
-    let currCourt = firebase.database().ref("/Courts").child(route.params.courtId);
-    console.log(currCourt);
+    const [currCourt, setCurrCourt] = useState("")
+
+    useEffect(() => {
+        firebase.database().ref("/Courts").child(route.params.courtId).once("value", (snapshot) => {
+            setCurrCourt(snapshot.key)
+        }
+    )})
+
+    // let currCourt = firebase.database().ref("/Courts").child(route.params.courtId);
+    console.log("HELLLLOOOO")
+    console.log("HELLLLOOOO" + currCourt);
 
     return (
         <ScrollView style={styles.container}>
             <View>
-                <CourtOccupany playerCount={10} onCourt={true}/>
+                <CourtOccupany courtId={currCourt}/>
                 <View style={styles.onCourtContainer}>
                     <PlayersOnCourt players={currCourt["PlayersOnCourt"]}/>
                     <TeamsOnCourt teams={currCourt["TeamsOnCourt"]}/>

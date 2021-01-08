@@ -24,7 +24,7 @@ export default function PlayersOnCourt({ players }) {
         return(
             <View style={styles.container}>
                 <Text style={styles.text}>Players on Court</Text>
-                <Text>There are currently no players on court.</Text>
+                <Text style={styles.noPlayerText}>There are currently no players on court.</Text>
             </View>
         );
     }
@@ -61,5 +61,11 @@ const styles = StyleSheet.create({
         height: undefined,
         aspectRatio: 1/1,
         borderRadius: 1000
+    },
+    noPlayerText: {
+        fontSize: 18,
+        color: "#ffffff",
+        marginStart: deviceWidth * 0.04,
+        marginTop: 5
     }
 })
