@@ -4,12 +4,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from "../pages/HomePage";
 import LocationInformation from "../pages/LocationInformation"
 import User from "../pages/User"
+import Header from "../components/Header";
 
 const Stack = createStackNavigator();
 
 export default function HomeStack() {
     return(
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: "#000000"
+                }
+            }}
+        >
             <Stack.Screen
                 name="Homepage"
                 component={HomePage}
@@ -23,10 +30,14 @@ export default function HomeStack() {
             <Stack.Screen
                 name="LocationInformation"
                 component={LocationInformation}
-                options={{
-                    title:"LocationInformation",
-                    headerShown: false
-                }}
+                options={({route}) => ({
+                    title: (
+                        <Header address={route.params.address}/>
+                    ),
+                    headerBackTitleVisible: false,
+                    headerTintColor: "#15F4EE",
+                    headerTitleAlign: "left"
+                })}
             />
 
             <Stack.Screen

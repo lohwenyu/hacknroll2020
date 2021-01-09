@@ -12,10 +12,13 @@ export default function LocationInformation({ route }) {
     const [currCourt, setCurrCourt] = useState("")
 
     useEffect(() => {
-        firebase.database().ref("/Courts").child(route.params.courtId).once("value", (snapshot) => {
+        firebase.database().ref("/Courts/" + route.params.courtId).on("value", (snapshot) => {
             setCurrCourt(snapshot.key)
+        })
+        return () => {
+            firebase.database().ref("/Courts/" + route.params.courtId).off()
         }
-    )})
+    }, [])
 
     console.log("HELLLLOOOO" + currCourt);
 

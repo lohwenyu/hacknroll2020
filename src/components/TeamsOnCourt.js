@@ -7,7 +7,7 @@ export default function TeamsOnCourt({ courtId }) {
 
     const [teams, setTeams] = useState({})
 
-    useEffect(() => {
+    const checkTeams = () => {
         firebase.database().ref("/Courts/" + courtId + "/TeamsOnCourt").on("value", (snapshot) => {
             let data = snapshot.val()
             if (data == null) {
@@ -20,6 +20,10 @@ export default function TeamsOnCourt({ courtId }) {
         return () => {
             firebase.database().ref("/Courts/" + courtId + "/TeamsOnCourt").off()
         }
+    }
+
+    useEffect(() => {
+        checkTeams()
     }, [])
 
     let teamId = Object.keys(teams);

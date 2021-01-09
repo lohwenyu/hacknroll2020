@@ -13,38 +13,38 @@ export default function NavBar() {
     return (
         <Tab.Navigator
             screenOptions={({route}) => ({
-            tabBarIcon: ({focused, color, size}) => {
-                let iconName;
+                tabBarIcon: ({focused, size}) => {
+                    let iconName;
 
-                if (route.name === 'Courts') {
-                    iconName = focused
-                    ? 'basketball'
-                    : 'basketball-outline';
+                    if (route.name === 'Courts') {
+                        iconName = focused
+                        ? 'basketball'
+                        : 'basketball-outline';
 
-                } else if (route.name === 'Chats') {
-                    iconName = focused 
-                    ? 'chatbubble-ellipses' 
-                    : 'chatbubble-ellipses-outline';
+                    } else if (route.name === 'Chats') {
+                        iconName = focused 
+                        ? 'chatbubble-ellipses' 
+                        : 'chatbubble-ellipses-outline';
 
-                } else if (route.name === 'Bookmarks') {
-                    iconName = focused 
-                    ? 'bookmarks' 
-                    : 'bookmarks-outline';
+                    } else if (route.name === 'Bookmarks') {
+                        iconName = focused 
+                        ? 'bookmarks' 
+                        : 'bookmarks-outline';
 
-                } else if (route.name === 'Leaderboard') {
-                    iconName = focused 
-                    ? 'trophy' 
-                    : 'trophy-outline';
+                    } else if (route.name === 'Leaderboard') {
+                        iconName = focused 
+                        ? 'trophy' 
+                        : 'trophy-outline';
 
-                } else if (route.name === 'Profile') {
-                    iconName = focused 
-                    ? 'person-circle'
-                    : 'person-circle-outline';
-                }       
+                    } else if (route.name === 'Profile') {
+                        iconName = focused 
+                        ? 'person-circle'
+                        : 'person-circle-outline';
+                    }       
 
-                return <Ionicons name={iconName} size={size} color={"#15F4EE"} />;
-            },
-            })}
+                    return <Ionicons name={iconName} size={size} color={"#15F4EE"} />;
+                }})
+            }
 
             tabBarOptions={{
                 style:{
@@ -68,14 +68,6 @@ export default function NavBar() {
     )
 }
 
-function Courts() {
-    return(
-        <View style={styles.DemoPageLayout}>
-            <Text style={styles.BaseText}>Court (Home) Screen</Text>
-        </View>
-    )
-}
-
 function Chats() {
     return(
         <View style={styles.DemoPageLayout}>
@@ -84,26 +76,10 @@ function Chats() {
     )
 }
 
-function Bookmarks() {
-    return(
-        <View style={styles.DemoPageLayout}>
-            <Text style={styles.BaseText}>Bookmarks Screen</Text>
-        </View>
-    )
-}
-
 function Leaderboard() {
     return(
         <View style={styles.DemoPageLayout}>
             <Text style={styles.BaseText}>Leaderboard Screen</Text>
-        </View>
-    )
-}
-
-function Profile() {
-    return(
-        <View style={styles.DemoPageLayout}>
-            <Text style={styles.BaseText}>Profile Screen</Text>
         </View>
     )
 }

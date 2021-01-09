@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import Button from "./Button";
 
-export default function BookmarkedCourt({ court, onPress }) {
+import firebase from "firebase";
+
+export default function BookmarkedCourt({ courtId, onPress }) {
+
+    const [court, setCourt] = useState({})
+
+    useEffect(() => {
+        firebase.database().ref("/Courts/" + courtId).on("value", snapshot => {
+            let data = snapshot.val()
+            if (data != null) {
+                setCourt(data)
+            }
+        })
+        return () => {
+            firebase.database().ref("/Courts/" + courtId).off()
+        }
+    }, [])
+
     return (
         <View style={styles.container}>
             <Text style={styles.addressText}>{court["Address"]}</Text>

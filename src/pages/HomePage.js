@@ -24,8 +24,8 @@ export default function HomePage({ navigation }) {
     // console.log(latitude);
     // console.log(longitude)
 
-    const onNavigate = (courtId) => {
-        navigation.navigate("LocationInformation", {courtId: courtId})
+    const onNavigate = (courtId, address) => {
+        navigation.navigate("LocationInformation", {courtId: courtId, address: address})
     }
 
     var currUser = firebase.auth().currentUser;
@@ -42,11 +42,14 @@ export default function HomePage({ navigation }) {
     const [courts, setCourts] = useState({});
 
     useEffect(() => {
-        firebase.database().ref("/Courts").once("value", snapshot => {
+        firebase.database().ref("/Courts").on("value", snapshot => {
             let data = snapshot.val()
             let courtItems = {...data}
             setCourts(courtItems)
         })
+        return () => {
+            firebase.database().ref("/Courts").off()
+        }
     }, [currUser])
 
     // let courts = database["Courts"]
@@ -71,7 +74,7 @@ export default function HomePage({ navigation }) {
                                 latitude: courts[key]["Coordinates"]["Latitude"],
                                 longitude: courts[key]["Coordinates"]["Longitude"]
                             }}
-                            onCalloutPress={() => onNavigate(key)} // do the navigation here
+                            onCalloutPress={() => onNavigate(key, courts[key]["Address"])} // do the navigation here
                         >
                             <MapView.Callout>
                                 <LocationDescription court={courts[key]}/>

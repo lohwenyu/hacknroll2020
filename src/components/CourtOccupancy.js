@@ -12,16 +12,18 @@ export default function CourtOccupany({ courtId }) {
     const [count, setCount] = useState(0);
 
 
-
     useEffect(()=> {
-        firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").once("value", (snapshot) => {
+        firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").on("value", (snapshot) => {
             if (snapshot.child(currUser).exists()) {
                 setOnCourt(true);
             }
         })
-    })
+        return () => {
+            firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").off()
+        }
+    },[])
 
-    useEffect(() => {
+    const checkCount = () => {
         firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").on("value", (snapshot) => {
             let data = snapshot.val()
             if (data == null) {
@@ -34,16 +36,22 @@ export default function CourtOccupany({ courtId }) {
         return () => {
             firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").off()
         }
-    })
+    }
+
+    useEffect(() => {
+        checkCount()
+    }, [])
 
     const onPressBall = () => {
         firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").child(currUser).set(true);
         setOnCourt(true);
+        checkCount()
     }
 
     const onPressExit = () => {
         firebase.database().ref("/Courts/" + courtId + "/PlayersOnCourt").child(currUser).remove();
         setOnCourt(false);
+        checkCount()
     }
 
     if (onCourt) {

@@ -1,26 +1,44 @@
-import React from "react";
-import { Dimensions, Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import BookmarkedCourt from "../components/BookmarkedCourt";
 
-import database from "../databaseExample";
+import firebase from "firebase";
 
 export default function Bookmarks({navigation}) {
     
     // userId hardcoded 
-    let bookmarkKeys = database["Users"]["UserID2"]["Bookmarks"];
+    var currUser = firebase.auth().currentUser.uid;
+
+    const [bookmarks, setBookmarks] = useState({});
+
+    useEffect(() => {
+        firebase.database().ref("/Users/" + currUser).child("Bookmarks").on("value", snapshot => {
+            let data = snapshot.val()
+            if (data != null) {
+                let bookmarkItems = {...data}
+                setBookmarks(bookmarkItems)
+            }
+        })
+        return () => {
+            firebase.database().ref("/Users/" + currUser).off()
+        }
+    }, [])
+
+    let bookmarkKeys = Object.keys(bookmarks);
 
     return (
         <ScrollView style={styles.container}>
                 {
                     bookmarkKeys.length > 0 ? (
                         bookmarkKeys.map((key) => (
-                            <View style={styles.innerContainer}>
-                                <View key={key} style={styles.individualBookmark}>
+                            <View key={key} style={styles.innerContainer}>
+                                <View style={styles.individualBookmark}>
                                     <BookmarkedCourt 
-                                        court={database["Courts"][key]}
+                                        courtId={key}
                                         onPress={() => navigation.navigate(
                                             "LocationInformation", {
-                                                courtId: key
+                                                courtId: key,
+                                                address: bookmarks[key]["Address"] //cannot
                                             }
                                         )}
                                     />

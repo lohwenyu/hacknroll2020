@@ -12,7 +12,8 @@ export default function OverallNav() {
             <Stack.Navigator
                 initialRouteName="LandingStack"
                 screenOptions={{
-                    headerShown: false
+                    headerShown: false,
+                    gestureEnabled: false
                 }}
             >
                 <Stack.Screen
